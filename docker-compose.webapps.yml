@@ -1,0 +1,78 @@
+version: '3.3'
+
+networks:
+  proxy:
+    external: true
+
+services:
+  web1:
+    image: nginx:1.13
+    networks:
+      - proxy
+    ports:
+      - "81:80"
+    deploy:
+      replicas: 1
+      labels:
+      - traefik.frontend.rule=Host:www.aprotski.tk
+      - traefik.docker.network=proxy
+      - traefik.port=80
+      - traefik.enable=true
+
+
+  web2:
+    image: httpd:2.4
+    networks:
+      - proxy
+    ports:
+      - "82:80"
+    deploy:
+      replicas: 1
+      labels:
+      - traefik.frontend.rule=Host:www.fmuela.tk
+      - traefik.docker.network=proxy
+      - traefik.port=80
+      - traefik.enable=true
+
+
+  web3:
+    image: httpd:2.4
+    networks:
+      - proxy
+    ports:
+      - "83:80"
+    deploy:
+      replicas: 1
+      labels:
+      - traefik.frontend.rule=Host:www.hyeghiazaryan.tk
+      - traefik.docker.network=proxy
+      - traefik.port=80
+      - traefik.enable=true
+
+  webgeneral:
+    image: httpd:2.4
+    networks:
+      - proxy
+    ports:
+      - "84:80" 
+    volumes:
+      - type: volume
+        source: volume.ftp
+        target: /usr/local/apache2/htdocs/
+    deploy:
+      replicas: 1
+      labels:
+      - traefik.frontend.rule=Host:www.facandayk.tk
+      - traefik.docker.network=proxy
+      - traefik.port=80
+      - traefik.enable=true
+
+volumes:
+  volume.ftp:
+    
+    
+
+
+
+  
+
