@@ -13,11 +13,11 @@ echo
 echo
 
 #Creates volume (deletes the old volume and containers in case if you have already executed the script 1 or more times)
+docker stack rm traefik webapps
 docker stop webgeneral server.ftp client.ftp web1 web2 web3
 docker rm webgeneral server.ftp client.ftp web1 web2 web3
 docker volume rm volume.ftp
 docker volume create volume.ftp
-docker stack rm traefik webapps
 sleep 1
 docker network rm proxy
 sleep 1
