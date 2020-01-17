@@ -13,7 +13,7 @@ configs:
 
 secrets:
   traefik_cert:
-    file: ./tls/cert.pem
+   file: ./tls/cert.pem
   traefik_key:
     file: ./tls/key.pem
 
