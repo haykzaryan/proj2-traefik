@@ -42,7 +42,7 @@ echo First website directory: ; read web1_dir
 echo Second website directory: ; read web2_dir
 echo Third website directory: ; read web3_dir
 echo General website directory: ; read webgeneral_dir
-cd $web1_dir && docker cp . $(docker ps -a | awk '{for(i=1;i<=NF;i++){if($i~/^webapps_web1.1/){print $i}}}'):/usr/share/nginx/html
+cd $web1_dir && docker cp . $(docker ps -a | awk '{for(i=1;i<=NF;i++){if($i~/^webapps_web1.1/){print $i}}}'):/usr/local/apache2/htdocs/
 cd $web2_dir && docker cp . $(docker ps -a | awk '{for(i=1;i<=NF;i++){if($i~/^webapps_web2.1/){print $i}}}'):/usr/local/apache2/htdocs/
 cd $web3_dir && docker cp . $(docker ps -a | awk '{for(i=1;i<=NF;i++){if($i~/^webapps_web3.1/){print $i}}}'):/usr/local/apache2/htdocs/
 cd $webgeneral_dir && docker cp . $(docker ps -a | awk '{for(i=1;i<=NF;i++){if($i~/^webapps_webgeneral1.1/){print $i}}}'):/usr/local/apache2/htdocs/

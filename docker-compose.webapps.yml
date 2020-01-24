@@ -6,7 +6,7 @@ networks:
 
 services:
   web1:
-    image: nginx:1.13
+    image: httpd:2.4
     networks:
       - proxy
     ports:
@@ -14,7 +14,7 @@ services:
     deploy:
       replicas: 1
       labels:
-      - traefik.frontend.rule=Host:www.aprotski.tk
+      - traefik.frontend.rule=Host:www.haykweb1.tk
       - traefik.docker.network=proxy
       - traefik.port=80
       - traefik.enable=true
